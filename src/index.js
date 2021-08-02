@@ -7,14 +7,16 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 const theme = createTheme({
 	palette: {
-		type: "dark",
+		type: "light",
 	},
 });
 
 ReactDOM.render(
 	<ThemeProvider theme={theme}>
-		<CssBaseline />
-		<App />
+		<React.StrictMode>
+			<CssBaseline />
+			<App />
+		</React.StrictMode>
 	</ThemeProvider>,
 	document.getElementById("root")
 );

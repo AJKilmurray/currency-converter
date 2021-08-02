@@ -13,15 +13,11 @@ function App() {
 
 		if (!inputField.value) {
 			// InputField value is empty
-			emptySearch(inputField);
+			invalidSearch(inputField);
 		} else if (inputField.value) {
 			// InputField value is not empty (valid)
 			validSearch(inputField);
 		}
-	};
-
-	const emptySearch = (input) => {
-		console.log("test");
 	};
 
 	const validSearch = async (input) => {
@@ -29,7 +25,7 @@ function App() {
 		const fetchResult = await fetchSearchData(input, value);
 
 		if (fetchResult.invalidSearch) {
-			searchNotFound(input);
+			invalidSearch(input);
 			return;
 		}
 
@@ -47,8 +43,21 @@ function App() {
 		setResults(resultOutput);
 	};
 
-	const searchNotFound = (input) => {
-		console.log("hello");
+	const invalidSearch = (input) => {
+		let timeoutID;
+		const callback = () => {
+			timeoutID = setTimeout(() => {
+				input.classList.remove("search-not-found");
+			}, 2000);
+		};
+		if (timeoutID) {
+			clearTimeout(timeoutID);
+			callback();
+			return;
+		} else if (!timeoutID) {
+			input.classList.add("search-not-found");
+			callback();
+		}
 	};
 
 	const fetchSearchData = async (input, keyword) => {
@@ -72,6 +81,7 @@ function App() {
 
 	return (
 		<Container maxWidth="lg">
+			<h1 className="heading">Currency Converter</h1>
 			<Form submitHandler={handleSubmit} />
 			<OutputTable
 				results={results}

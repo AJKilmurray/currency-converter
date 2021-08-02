@@ -35,7 +35,7 @@ function OutputTable({ results, currency, amount }) {
 								{result.key.toUpperCase()}
 							</TableCell>
 							<TableCell align="right" className="conversion">
-								{amount.value} {currency.value.toUpperCase()} <ArrowForwardIcon color="error" />{" "}
+								{amount.value > 0 ? amount.value : 1} {currency.value.toUpperCase()} <ArrowForwardIcon color="error" />{" "}
 								{result.value.toFixed(2)} {result.key.toUpperCase()}
 							</TableCell>
 						</TableRow>
