@@ -20,7 +20,7 @@ function FilterDropdown({ handlers }) {
 	};
 
 	return (
-		<FormControl className={(classes.formControl, "filter")}>
+		<FormControl className={classes.formControl} id="filter">
 			<InputLabel id="demo-simple-select-label">Sort</InputLabel>
 			<Select labelId="demo-simple-select-label" id="demo-simple-select" value={filter} onChange={handleChange}>
 				<MenuItem value={1} onClick={handlers[0]}>

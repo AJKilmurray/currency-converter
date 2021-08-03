@@ -29,7 +29,7 @@ form {
 	row-gap: 1rem;
 }
 
-.filter {
+#filter {
 	grid-column: span 2;
 }
 
