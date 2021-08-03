@@ -51,6 +51,7 @@ function App() {
 		setResults(resultOutput);
 	};
 
+	// Invalid search params
 	const invalidSearch = (input) => {
 		let timeoutID;
 		const callback = () => {
@@ -68,6 +69,7 @@ function App() {
 		}
 	};
 
+	// Fetch API data based on search params
 	const fetchSearchData = async (input, keyword) => {
 		return await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${keyword}.json`)
 			.then((res) => {
